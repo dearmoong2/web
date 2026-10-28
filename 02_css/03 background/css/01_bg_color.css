@@ -1,0 +1,41 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=Do+Hyeon&family=Dongle&family=Hi+Melody&family=Yeon+Sung&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body{
+  background-color: blueviolet;
+}
+
+.container{
+  width: 500px;
+  border: 1px solid #fff;
+  margin-top: 10px;
+  margin-left: auto;
+  margin-right: auto;
+}
+
+ul{
+  list-style: none;
+}
+
+/* 1. hsl / 2. rgb / 3. 16진수 / 4.rgba 구글 웹폰트 4개 */
+.ul1{
+  font-family: "Dongle", sans-serif;
+  background-color: hsl(0, 0%, 96%);
+}
+.ul2{
+  font-family: "Yeon Sung", system-ui;
+  background-color: rgb(255,226,226);
+}
+.ul3{
+  font-family: "Hi Melody", sans-serif;
+  background-color: #ffc7c7;
+}
+.ul4{
+  font-family: "Do Hyeon", sans-serif;
+  background-color: rgba(135,133,162,1);
+}

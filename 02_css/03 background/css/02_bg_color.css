@@ -1,0 +1,58 @@
+@charset "UTF-8";
+@import url('https://fonts.googleapis.com/css2?family=East+Sea+Dokdo&family=Gasoek+One&family=Kirang+Haerang&family=Song+Myung&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+}
+
+.container {
+  width: 500px;
+  margin: 10px auto;
+  border: 1px solid #ccc;
+  padding: 10px;
+}
+
+.container ul {
+  padding: 50px;
+  border: 5px dotted #1a1a1a;
+  background-color: lightcoral;
+}
+
+/* ul list-style 다 다르게 */
+.con1 ul {
+  list-style: circle;
+}
+
+.con2 ul {
+  list-style: armenian;
+}
+
+.con3 ul {
+  list-style: georgian;
+}
+
+.con4 ul {
+  list-style: none;
+}
+
+/* h2 폰트 및 백그라운드 컬러 다 다르게 / 폰트 컬러 변경은 선택 */
+.con1>h2 {
+  font-family: "Gasoek One", sans-serif;
+  background-color: bisque;
+}
+
+.con2>h2 {
+  font-family: "Song Myung", serif;
+  background-color: skyblue;
+}
+
+.con3>h2 {
+  font-family: "Kirang Haerang", system-ui;
+  background-color: pink
+}
+
+.con4>h2 {
+  font-family: "East Sea Dokdo", sans-serif;
+  background-color: cornflowerblue;
+}
