@@ -1,0 +1,79 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>translate</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .modal {
+      position: fixed;
+      inset: 0;
+      background: rgba(0, 0, 0, 0.8);
+    }
+
+    #closeBtn {
+      background: #fff;
+      cursor: pointer;
+      width: 50px;
+      height: 50px;
+      position: absolute;
+      bottom: 100px;
+      left: 50%;
+      transform: translate(-50%);
+    }
+
+    .modal_inner {
+      background: #fff;
+      width: 70%;
+      height: 500px;
+      /* 가운데 정렬 할 때 꼭 필요한 세트 느낌임 */
+      position: absolute;
+      left: 50%;
+      top: 50;
+      transform: translate(-50%, -50%);
+      top: 0;
+      transform: translateX(-50%);
+    }
+
+    header {}
+  </style>
+</head>
+
+<body>
+  <div class="modal">
+    <button type="button" id="closeBtn">x</button>
+    <div class="modal_inner">
+      Lorem ipsum dolor sit amet consectetur adipisicing elit. Ipsum, consectetur commodi. Veritatis omnis ex tenetur
+      quidem autem obcaecati unde, cupiditate vero id temporibus odit ab, deleniti eveniet repellendus amet itaque!
+      Necessitatibus esse praesentium, consequuntur suscipit nihil nam delectus soluta minima quisquam ipsam totam
+      facere ut corrupti consectetur incidunt in quidem, inventore laborum error, dolor accusamus veniam veritatis.
+      Debitis vero quasi minima a animi eaque ratione soluta totam consequuntur beatae et error non voluptatum dolorem
+      repellendus officiis, corporis maxime quia, amet inventore cupiditate! Dolorem, ad quae recusandae commodi
+      pariatur perferendis non totam dicta fuga quisquam laudantium, hic voluptates natus architecto dolores beatae nam
+      necessitatibus ea porro ex voluptate cum est repudiandae quia. Nisi laudantium nihil quisquam commodi libero
+      cupiditate, dignissimos ipsam vitae distinctio facilis laborum sequi minima! Soluta doloribus, quos cum nulla
+      omnis iure perspiciatis ipsa quia possimus fuga neque ea recusandae a quae sed magni deleniti molestiae
+      repudiandae perferendis enim provident quo doloremque libero. Amet blanditiis officiis incidunt odit fuga vero
+      consequuntur deserunt, id nobis ipsum, praesentium doloribus quasi architecto iure harum, est expedita accusantium
+      ut eligendi ullam placeat maxime laborum repudiandae. Nesciunt sapiente ipsam sit ab, repudiandae, enim nisi sunt,
+      quibusdam quas modi laborum placeat quod. Maiores ea nesciunt labore necessitatibus fugit nostrum eligendi,
+      voluptate minus laudantium nihil sed doloribus neque libero? Iure, dolore quas cupiditate rerum quia quasi porro
+      facere, tempora quod ipsa earum ea obcaecati odio corporis consequatur totam modi qui atque illum dicta quo
+      voluptatibus minima? Aliquam atque eos, blanditiis, neque cupiditate necessitatibus odit corporis delectus beatae
+      cumque possimus fuga reprehenderit animi exercitationem. Quia dolor labore reprehenderit repudiandae vero nostrum
+      qui quam neque fuga? Dolorum illo voluptatibus aut expedita voluptate dolore. Aspernatur laudantium voluptates
+      facere accusantium recusandae officia quae quod voluptatum qui aut? Beatae ipsa veniam quo reiciendis dolorum
+      placeat dolorem esse nostrum modi ratione? Minus.
+    </div>
+  </div>
+
+  <header><a href="#">logo</a></header>
+</body>
+
+</html>

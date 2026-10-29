@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>scale</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    ul {
+      list-style: none;
+      width: 640px;
+      margin: 0 auto;
+      display: flex;
+      justify-content: space-between;
+    }
+
+    ul li {
+      width: 200px;
+      height: 150px;
+      overflow: hidden;
+    }
+
+    ul li a {
+      display: block;
+      width: 100%;
+      height: 100%;
+    }
+
+    ul li a img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: .6s;
+    }
+
+    ul li:hover a img {
+      transform: scale(1.2);
+    }
+  </style>
+</head>
+
+<body>
+  <ul>
+    <li><a href="#"><img
+          src="https://i.namu.wiki/i/oGREPLFnhKpeug4PruPX079oVb0_74EpS8dCOeC59XB2my_BzOQFlmvX-zghh6Hgc2QyJUG7dPt621eGtl-MMg.webp"
+          alt="빅뱅"></a></li>
+    <li><a href="#"><img src="https://img5.yna.co.kr/etc/inner/KR/2026/08/19/AKR20260819045000005_02_i_P4.jpg"
+          alt="빅뱅"></a></li>
+    <li><a href="#"><img src="https://image.bugsm.co.kr/artist/images/1200/800200/80020023.jpg" alt="빅뱅"></a></li>
+  </ul>
+</body>
+
+</html>
