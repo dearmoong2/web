@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html lang="ko">
+
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>카드 뒤집기</title>
+  <style>
+    * {
+      margin: 0;
+      padding: 0;
+    }
+
+    .con {
+      width: 300px;
+      height: 300px;
+      background: #ccc;
+      position: relative;
+      margin: 400px auto;
+    }
+
+    .con .card {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+      transition: .6s;
+      transform-style: preserve-3d;
+      transform-origin: left top;
+    }
+
+    .con:hover .card {
+      transform: rotateX(180deg);
+    }
+
+    .face {
+      width: 100%;
+      height: 100%;
+      position: absolute;
+      left: 0;
+      top: 0;
+    }
+
+    .face img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+
+    .back {
+      transform: rotateX(180deg);
+      backface-visibility: hidden;
+    }
+  </style>
+</head>
+
+<body>
+  <div class="con">
+    <div class="card">
+      <div class="face front"><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcTQqGwW-gPAz6TAbEfUOR2F06Nryyrdu_0biQNMwnbbNg&s=10"
+          alt="빅뱅 앞면"></div>
+      <div class="face back"><img
+          src="https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcRuFGSe_JtY7aFJvQH-zGQxJVpp1OICn8Xnj4RYid4cfQ&s=10"
+          alt="빅뱅 뒷면"></div>
+    </div><!-- //.card -->
+  </div><!-- //.com -->
+</body>
+
+</html>
