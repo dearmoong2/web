@@ -134,6 +134,8 @@ body {
   cursor: pointer;
   opacity: .78;
   transition: .45s;
+  position: relative;
+  overflow: hidden;
 }
 
 .signal_card:hover,
@@ -389,7 +391,7 @@ body {
   line-height: 1.35;
 }
 
-.fomular_bar {
+.formular_bar {
   display: flex;
   flex-wrap: wrap;
   margin-top: 36px;
@@ -398,26 +400,26 @@ body {
   font: 700 13px/1 var(--eng-font1);
 }
 
-.fomular_bar span,
-.fomular_bar strong,
-.fomular_bar i {
+.formular_bar span,
+.formular_bar strong,
+.formular_bar i {
   display: inline-flex;
   min-height: 34px;
   align-items: center;
 }
 
-.fomular_bar span,
-.fomular_bar strong {
+.formular_bar span,
+.formular_bar strong {
   border: 1px solid rgba(157, 255, 236, 0.2);
   padding: 0 12px;
   background: rgba(3, 12, 12, 0.72);
 }
 
-.fomular_bar strong {
+.formular_bar strong {
   color: var(--color_mint);
 }
 
-.fomular_bar i {
+.formular_bar i {
   color: var(--color_pink);
   font-style: normal;
 }
