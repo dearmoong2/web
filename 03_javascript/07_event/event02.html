@@ -54,7 +54,7 @@
   <div>
     <button id="abortBtn">이미지 로딩 중단</button>
     <button id="reBtn">이미지 로딩 다시시작</button>
-    <a href="http://naver.com">네이버</a>
+    <a href="http://naver.com" class="naver">네이버</a>
   </div>
   <script>
     let order = 1;
@@ -68,7 +68,7 @@
       const testImg = document.getElementById('testImg');
       const abortBtn = document.getElementById('abortBtn');
       const reBtn = document.getElementById('reBtn');
-      const imgScr = testImg.src;
+      const imgSrc = testImg.src;
 
       log(`${order++} : DOMContentLoaded : DOM 준비 완료!`);
       log(`기본 창 크기 : ${window.innerWidth} x ${window.innerHeight}`);
@@ -84,6 +84,28 @@
         log(`-> 원본 크기 : ${testImg.naturalWidth} x ${testImg.naturalHeight}`);
       });
 
+      abortBtn.addEventListener('click', () => {
+        testImg.src = ''; //src 제거 > 로딩 취소
+        log(`abortBtn 클릭 -> 이미지 로딩 취소`);
+      })
+      testImg.addEventListener('abort', () => {
+        log(`${order++} : abort : 이미지 로딩 중단됨`);
+      });
+      reBtn.addEventListener('click', () => {
+        testImg.src = imgSrc;
+        log('이미지 다시 추가');
+      });
+      window.addEventListener('resize', () => {
+        log(`resize 창 크기 : ${window.innerWidth} x ${window.innerHeight}`);
+      });
+      window.addEventListener('scroll', () => {
+        log(`window.scrollY : ${window.scrollY}`);
+      });
+
+      document.querySelector('.naver').addEventListener('click', (e) => {
+        e.preventDefault();
+        testImg.style.width = '500px';
+      })
     }); //end
   </script>
 </body>
