@@ -39,7 +39,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
   });
 
   /* 3. stagger + ScrollTrigger */
-  //같은 셀렉터로 여러 요소가 선택될때 (NodeList, HTMLCollection,배열형태)
+  //같은 셀렉터로 여러 요소가 선택될때 (NodeList, HTMLCollection, 배열 형태)
   //stagger : 단일 요소에는 의미없음
   gsap.from('.chips li', {
     y: 50,
