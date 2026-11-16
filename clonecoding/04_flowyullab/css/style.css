@@ -172,7 +172,7 @@ header .right {
 }
 
 header .right a {
-  transition: 0.3s;
+  transition: 0.6s;
 }
 
 header .right a:nth-child(1) {
@@ -254,7 +254,7 @@ header .container {
 }
 
 header .container h2 {
-  font-size: 32px;
+  font-size: 36px;
   font-weight: 600;
   margin-bottom: 1em;
 }
@@ -315,7 +315,7 @@ header .container .all_con ul.list>li ul {
   font-style: 16px;
 }
 
-header .container .all_con ul.list>li ul:hover a {
+header .container .all_con ul.list>li ul li:hover a {
   color: var(--yul-brand-amber);
 }
 
@@ -563,7 +563,7 @@ main .more.border:hover {
   left: 40px;
   bottom: 40px;
   transition: .6s;
-  transform: translateY(120px);
+  transform: translateY(102px);
 }
 
 .article_bottom .box3 .txt_b {
@@ -582,7 +582,7 @@ main .more.border:hover {
 
 .article_bottom .box .txt_b a.more {
   height: 56px;
-  font-style: 16px;
+  font-size: 16px;
   color: var(--gray-08);
   margin-top: 46px;
   max-width: 180px;
