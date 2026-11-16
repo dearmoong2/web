@@ -36,25 +36,37 @@ toggleBtn.addEventListener('click', function () {
 });
 
 //현재 슬라이드 번호가 들어갈 자리
-const numEl=document.querySelector('.main_visual .pager .txt_box .num');
+const numEl = document.querySelector('.main_visual .pager .txt_box .num');
 
 //전체 슬라이드 개수가 들어갈 자리
-const totalEl=document.querySelector('.main_visual .pager .txt_box span:last-of-type');
+const totalEl = document.querySelector('.main_visual .pager .txt_box span:last-of-type');
 
 //swiper는 loop를 쓰면 복제 슬라이드를 만들기 때문에
 //복제본을 빼고 진짜 슬라이드만 세어야 전체 갯수가 맞습니다.
 const getTotal = () => mainSlide.slidesEl.querySelectorAll('.swiper-slide:not(.swiper-slide-duplicate)').length;
 
 //화면에 현재 번호와 전체 갯수를 적어주는 함수
-const setPager=()=>{
+const setPager = () => {
   //realIndex는 0부터 시작하므로 화면에는 1을 더해서 보여줍니다.
-  const current=mainSlide.realIndex +1;
-  numEl.textContent=String(current);
-  totalEl.textContent=String(getTotal());
+  const current = mainSlide.realIndex + 1;
+  numEl.textContent = String(current);
+  totalEl.textContent = String(getTotal());
 };
 
 //처음 페이지가 열렸을 때 번호를 한 번 적어줍니다.
 setPager();
 
 //슬라이드가 바뀔 때마다 번호도 다시 바뀜
-mainSlide.on('slideChange',setPager);
+mainSlide.on('slideChange', setPager);
+
+//공지 영역의 세로 슬라이드
+const infoSlide = new Swiper('.article_top .slide .swiper', {
+  direction: 'vertical',
+  //마지막 슬라이드 다음에 다시 첫 슬라이드로 이어지게 함
+  loop: true,
+  //자동으로 다음 슬라이드로 넘어감
+  autoplay: {
+    delay: 2500,
+    disableOnInteraction: false,
+  },
+});
