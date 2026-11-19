@@ -113,6 +113,25 @@ const contentsSlide = new Swiper('.contents .swiper', {
     delay: 0,
     disableOnInteraction: false,
   },
+  //화면 크기별로 카드 사이 간격과 흐르는 속도를 바꿈
+  breakpoints: {
+    0: {
+      speed: 6500,
+      spaceBetween: 16,
+    },
+    501: {
+      speed: 7200,
+      spaceBetween: 20,
+    },
+    769: {
+      speed: 8200,
+      spaceBetween: 24,
+    },
+    1161: {
+      speed: 9000,
+      spaceBetween: 30,
+    },
+  },
   on: {
     //계속 같은 속도로 흐르게 linear를 적용
     init: function () {
@@ -137,6 +156,24 @@ const blogSlide = new Swiper('.blog .swiper', {
     delay: 0,
     disableOnInteraction: false,
   },
+  breakpoints: {
+    0: {
+      speed: 8000,
+      spaceBetween: 16,
+    },
+    501: {
+      speed: 9000,
+      spaceBetween: 20,
+    },
+    769: {
+      speed: 10500,
+      spaceBetween: 24,
+    },
+    1161: {
+      speed: 12000,
+      spaceBetween: 30,
+    },
+  },
   on: {
     //계속 같은 속도로 흐르게 linear를 적용
     init: function () {
@@ -146,6 +183,21 @@ const blogSlide = new Swiper('.blog .swiper', {
       this.wrapperEl.style.transitionTimingFunction = 'linear';
     },
   },
+});
+
+//화면 크기가 바뀌면 카드 너비와 슬라이드 위치가 달라짐
+//그래서 swiper에게 '다시 계산'하라고 알려주는 함수 생성
+const updateResponsiveSlides=()=>{
+  [mainSlide,infoSlide,contentsSlide,blogSlide].forEach((slide)=>{
+    slide.update();
+  })
+}
+
+//리사이즈 중에는 계산을 계속하지 않고 잠깐 멈춘 뒤 한 번만 계산함
+let resizeTimer;
+window.addEventListener('resize',()=>{
+  clearTimeout(resizeTimer);
+  resizeTimer=setTimeout(updateResponsiveSlides,120);
 });
 
 document.querySelector('.select_box button').addEventListener('click', () => {
