@@ -263,8 +263,7 @@ header.on .ham_menu {
 }
 
 header .container {
-  width: 100%;
-  max-width: 1300px;
+  width: min(1280px, calc(100% - 40px));
   margin: 0 auto;
 }
 
@@ -327,7 +326,7 @@ header .container .all_con ul.list>li:hover button::before {
 header .container .all_con ul.list>li ul {
   margin-top: 2em;
   line-height: 2.4;
-  font-style: 16px;
+  font-size: 16px;
 }
 
 header .container .all_con ul.list>li ul li:hover a {
@@ -716,6 +715,8 @@ main .more.border:hover {
   height: 1000px;
   display: flex;
   align-items: center;
+  z-index: 3;
+  position: relative;
 }
 
 .motion .tit b {
@@ -1219,7 +1220,7 @@ footer .f_top .logo_box .logo {
 footer .f_top .logo_box .logo_b {
   display: flex;
   gap: 50px;
-  font-style: 1.1rem;
+  font-size: 1.1rem;
   opacity: .4;
 }
 
@@ -1274,7 +1275,7 @@ footer .f_top button:hover {
   justify-content: space-between;
   align-items: center;
   color: var(--gray-00);
-  font-style: 18px;
+  font-size: 18px;
   cursor: pointer;
   z-index: 5;
   border-radius: 16px;
@@ -1339,7 +1340,7 @@ footer .f_bottom {
   color: var(--gray-07);
   line-height: 1.6;
   letter-spacing: -0.5px;
-  font-style: 16px;
+  font-size: 16px;
 }
 
 footer .f_bottom strong,
