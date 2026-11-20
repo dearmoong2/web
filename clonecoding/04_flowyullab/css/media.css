@@ -77,7 +77,7 @@
     --round: 16px;
   }
 
-  header.on .inner {
+  header .inner {
     height: 64px;
   }
 
@@ -132,7 +132,7 @@
     font-family: var(--font-Eng2);
   }
 
-  header .container .all_con ul.list>li:on button::before {
+  header .container .all_con ul.list>li.on button::before {
     transform: rotate(-90deg) scaleY(1.4);
   }
 
@@ -254,7 +254,7 @@
   }
 
   .learning {
-    padding: 0 0 56px;
+    padding: 0 20px 56px;
   }
 
   .learning ul {
@@ -269,7 +269,6 @@
 
   .learning ul li:hover img {
     opacity: 1;
-
   }
 
   .learning ul li h3 {
@@ -547,8 +546,8 @@
 @media screen and (max-width:768px) {
   .main_visual {
     height: 100vh;
-    min-height: 100vw;
-    max-height: 100vw;
+    min-height: 100vh;
+    max-height: 100vh;
   }
 
   .main_visual .swiper li {
