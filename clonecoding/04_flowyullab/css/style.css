@@ -617,7 +617,6 @@ main .more.border:hover {
 
 .article_bottom .box1:hover {
   flex: 1.5;
-
 }
 
 .article_bottom .box1 p {
@@ -905,7 +904,7 @@ main .more.border:hover {
   align-self: flex-end;
 }
 
-.learning ul li:hover:after {
+.learning ul li:hover::after {
   display: none;
 }
 
@@ -956,7 +955,6 @@ main .more.border:hover {
   display: flex;
   height: 100%;
   flex-direction: column;
-
 }
 
 .con .swiper .box a .img_box img {
@@ -1193,7 +1191,7 @@ main .more.border:hover {
 }
 
 footer {
-  height: 100%;
+  width: 100%;
   padding: 60px 0 100px;
   background: var(--gray-09);
   color: var(--gray-00);
