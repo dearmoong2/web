@@ -21,7 +21,7 @@ document.addEventListener("DOMContentLoaded", (event) => {
     //지금 프레임의 시간을 Lenis에게 알려줌
     lenis.raf(time);
     //ScrollTrigger가 현재 스크롤 위치를 다시 계산하게 함
-    ScrollTrigge.update();
+    ScrollTrigger.update();
     //다음 화면 프레임에서도 같은 일을 반복함
     requestAnimationFrame(raf);
   }
@@ -44,10 +44,10 @@ document.addEventListener("DOMContentLoaded", (event) => {
 
     //아래로 충분히 내렸고 첫 화면을 지난 상태면 헤더를 위로 숨김
     if (y > lastY + 4 && y > 120) {
-      siteHeader.style.transform = 'traslateY(-100%)'
+      siteHeader.style.transform = 'translateY(-100%)'
     } else if (y < lastY - 4) {
       //원래 자리로 되돌린다
-      siteHeader.style.transform = 'traslateY(0)'
+      siteHeader.style.transform = 'translateY(0)'
     }
     //다음 비교를 위해 현재 위치를 저장
     lastY = y;
@@ -80,16 +80,61 @@ document.addEventListener("DOMContentLoaded", (event) => {
     '#contact',
   ]
 
+  //화면의 42% 지점에 가장 가까운 섹션을 현재 섹션으로 판단함
+  //맨 아래 근처에는 contact 메뉴가 끝까지 active로 보이게 따로 처리
   function updateActiveFromViewport() {
+    //문서 맨 아래에 가까운지 확인
+    const isNearBottom = window.screenY + window.innerHeight >= document.documentElement.scrollHeight - 80;
+    //맨 아래라면 마지막 contact 메뉴를 킴
+    if (isNearBottom) {
+      setActiveByHref('#contact');
+      return;
+    }
+    //화면 위에서 42% 내려온 지점을 현재 섹션 판단 기준으로 씀
+    const checkPoint = window.innerHeight * 0.24;
+    //아직 못 찾았을 때 기본 active는 hero로 둠
+    let activeHref = '#hero';
+    //가장 가까운 섹션을 찾기 위해 큰 숫자로 시작함
+    let activeDistance = Infinity;
+    //섹션 목록을 하나씩 돌면서 기준점과의 거리를 비교함
+    sectionMap.forEach((id) => {
+      const section = document.querySelector(id);
+      //섹션이 없으면 이번 항목을 건너뜀
+      if (!section) return;
 
+      //화면 안에서 섹션의 현재 위치를 가져옴
+      const rect = section.getBoundingClientRect();
+      //기준점이 섹션 안에 들어와 있는 지 확인함
+      const isInside = rect.top <= checkPoint && rect.bottom >= checkPoint;
+      //섹션 안이면 거리는 0, 밖이면 위/아래 경계 중 더 가까운 거리로 계산함
+      const distance = isInside ? 0 : Math.min(Math.abs(rect.top - checkPoint), Math.abs(rect.bottom - checkPoint));
+
+      //이번 섹션이 지금까지 본 섹션보다 기준점에 더 가까우면 교체
+      if (distance < activeDistance) {
+        //가장 가까운 거리 값을 갱신
+        activeDistance = distance;
+        //active로 켤 href도 이번 섹션 id로 바꿈
+        activeHref = id;
+      }
+      setActiveByHref(activeHref);
+    });
   }
 
-  gsap.timelind({ default: { duration: 0.8, ease: 'power2.out' } })
+  function setActiveByHref(href) {
+    //모든 메뉴 링크를 하나씩 확인함
+    navLinks.forEach((link) => {
+      //현재 링크의 href가 켜야 할 섹션 href와 같은 지 비교
+      const isSameLink = link.getAttribute('href') === href;
+      //같은 링크면 active를 켜고 아니면 끔
+      link.classList.toggle('.is_active', isSameLink);
+    })
+  }
+  setActiveByHref('#hero');
+
+  gsap.timeline({ default: { duration: 0.8, ease: 'power2.out' } })
     .to('.hero_title', { y: 0, opacity: 1 })
     .to('.hero_sub', { y: 0, opacity: 1 }, '<0.12')
     .to('.hero_cta', { y: 0, opacity: 1 }, '<0.12');
-
-
 
   document.querySelectorAll('.magnet_zone').forEach((zone) => {
     const btn = zone.querySelector('.cta_btn');
@@ -104,11 +149,61 @@ document.addEventListener("DOMContentLoaded", (event) => {
       const y = e.clientY - (rect.top + rect.height / 2);
 
       //계산한 거리의 10%만큼만 버튼을 움직여 과하지 않게 만든다
-      btn.style.transform = `translate(${x * 0.1},${y * 0.1})`
+      btn.style.transform = `translate(${x * 0.1}px,${y * 0.1}px)`
     });
 
     zone.addEventListener('mouseleave', () => {
       btn.style.transform = `translate(0,0)`;
     })
-  })
+  });
+
+  //marquee는 같은 글자 줄을 여러 개 복사해서 끝없이 흐르는 것처럼 보이게 함
+  function marquee() {
+    document.querySelectorAll('.marquee_wrap').forEach((wrap) => {
+      const row = wrap.querySelector('.marquee_row');
+      //기준 줄이 없으면 복사할 것도 없으니 건너뜀
+      if (!row) return;
+
+      //한 줄의 실제 가로 길이 저장
+      const rowWidth = row.scrollWidth;
+
+      for (let i = 1; i < 10; i += 1) {
+        //기준 줄을 복사해서 wrapper 안에 추가
+        wrap.appendChild(row.cloneNode(true));
+      }
+      const rows = wrap.querySelectorAll('.marquee_row');
+      //현재 가로 이동 위치 저장
+      let x = 0;
+
+      //한 프레임마다 글자 줄을 조금씩 이동시키는 함수
+      function step() {
+        //reverse 클래스가 있으면 오른쪽, 없으면 왼쪽으로 움직임
+        const dir = wrap.classList.contains('reverse') ? -1 : 1;
+        //방향에 맞춰 현재 위치를 1px씩 움직임
+        x += dir;
+
+        //모든 복제 줄의 위치를 각각 다시 계산
+        rows.forEach((item, index) => {
+          //현재 줄은 기본 위치에 자기 순서만큼 rowWidth를 더해 배치
+          let offset = x + index * rowWidth;
+          //왼쪽으로 나가서 완전히 사라진 줄은 맨 오른쪽 뒤로 보냄
+          if (dir === -1 && offset <= -rowWidth) {
+            offset += rowWidth * rows.length;
+          } else if (dir === 1 && offset >= rowWidth) {
+            //오른쪽으로 나가서 완전히 사라진 줄은 맨 왼쪽 앞으로 보냄
+            offset -= rowWidth * rows.length;
+          }
+          //계산한 위치를 실제 화면 이동으로 적용
+          item.style.transform = `translateX(${offset}px)`;
+        });
+
+        //다음 프레임에서도 계속 움직이게 예약
+        requestAnimationFrame(step);
+      }
+      //이 marquee 줄의 애니메이션을 시작
+      requestAnimationFrame(step);
+    });
+  }
+  //페이지에 있는 marquee들을 실제로 실행
+  marquee();
 });//end
