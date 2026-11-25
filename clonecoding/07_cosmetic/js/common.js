@@ -18,9 +18,21 @@ document.addEventListener('DOMContentLoaded', () => {
     $header.classList.toggle('on');
     document.body.classList.toggle('lock');
   });
+
   // 메뉴 li들의 순차적 delay 주기
   const gnbItems = document.querySelectorAll('header .fix .gnb>ul>li');
   gnbItems.forEach((li, index) => {
     li.style.transitionDelay = `${0.2 * (index + 1)}s`
+  });
+
+  //스크롤 시 header 색상 및 blur 바꾸기
+  window.addEventListener('scroll', () => {
+    const st = window.scrollY;
+    //console.log(st);
+    if (st >= 80) {
+      $header.classList.add('sc');
+    } else {
+      $header.classList.remove('sc');
+    }
   });
 });//end
